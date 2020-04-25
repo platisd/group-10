@@ -58,28 +58,28 @@ void loop() {
          case 'l': // rotate counter-clockwise going forward
              car.setSpeed(forwardSpeed);
              car.setAngle(lDegrees);
-             if (sensor.readRangeContinuousMillimeters()<= 0){
+             if (sensor.readRangeContinuousMillimeters()<= 100){
               car.setSpeed(brake);
              }
              break;
          case 'r': // turn clock-wise
              car.setSpeed(forwardSpeed);
              car.setAngle(rDegrees);
-             if (sensor.readRangeContinuousMillimeters()<= 0){
+             if (sensor.readRangeContinuousMillimeters()<= 100){
               car.setSpeed(brake);
              }
              break;
          case 'f': // go ahead
              car.setSpeed(forwardSpeed);
              car.setAngle(0);
-             if (sensor.readRangeContinuousMillimeters()<= 0){
+             if (sensor.readRangeContinuousMillimeters()<= 100){
               car.setSpeed(brake);
              }
              break;
          case 'b': // go back
              car.setSpeed(backSpeed);
              car.setAngle(0);
-             if (sensor.readRangeContinuousMillimeters()<= 0){
+             if (sensor.readRangeContinuousMillimeters()<= 100){
               car.setSpeed(brake);
              }
              break;
