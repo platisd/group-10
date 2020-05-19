@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.GoogleMap;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button location;
     //HTTP server;
+    protected GoogleMap map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +50,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
 
             public void onClick(View v) {
-                           openMapActivity();
+                openMapActivity();
 
             }
-                                    }
+
+        }
         );
 
 

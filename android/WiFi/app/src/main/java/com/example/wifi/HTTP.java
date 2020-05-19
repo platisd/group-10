@@ -49,7 +49,7 @@ public class HTTP {
                    // if (response.body().string().){
 
                    // }
-                    MapsActivity.latlng();
+                   // MapsActivity.latlng();
                     connectionRequest = true;
                 }else{
                     connectionRequest = false;
