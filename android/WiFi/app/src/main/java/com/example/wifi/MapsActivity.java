@@ -36,11 +36,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        //setUpMapIfNeeded();
+        setUpMapIfNeeded();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-              .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+//         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+//               .findFragmentById(R.id.map);
+//         mapFragment.getMapAsync(this);
     }
 
 
@@ -87,7 +87,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             conn = (HttpURLConnection) url.openConnection();
             InputStreamReader in = new InputStreamReader(conn.getInputStream());
 
-            // Read the JSON data into the StringBuilder
+            // Read the data into the StringBuilder
             int read;
             char[] buff = new char[1024];
             while ((read = in.read(buff)) != -1) {
@@ -120,10 +120,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     void createMarkersFromJson(String json) throws JSONException {
-        // De-serialize the JSON string into an array of city objects
-
-
-        ///////Sth happens in these lines
+    
         JSONObject jsonObj = new JSONObject();
         String []array = json.split(",");
         //System.out.println("My first value "+ array[0]);
@@ -158,6 +155,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
         setUpMap();
+        
+        /* The codes below were generated automatically
+        so Just leaving it there 
+        */
 
         // Add a marker in Sydney and move the camera
 
