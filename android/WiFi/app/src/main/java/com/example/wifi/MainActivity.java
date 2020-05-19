@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = (TextView) findViewById(R.id.makeDelivText);
-        //server = new HTTP();
         button = (Button) findViewById(R.id.manuallyBtn);
         location = (Button) findViewById(R.id.currentLocation);
         button.setOnClickListener(new View.OnClickListener() {

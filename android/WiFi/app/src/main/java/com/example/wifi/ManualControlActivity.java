@@ -3,6 +3,7 @@ package com.example.wifi;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -15,15 +16,14 @@ public class ManualControlActivity extends AppCompatActivity {
     ImageButton left;
     ImageButton right;
     ImageButton stop;
+    Button speedUp;
+    Button speedDown;
     boolean request = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual_control);
-
-
-
         buttonsInitializer();
 
         forward.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +81,28 @@ public class ManualControlActivity extends AppCompatActivity {
         });
 
 
+        speedUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RequestHelper.requestToServer("/A");
+                Toast.makeText(getApplicationContext(), "Stopping", Toast.LENGTH_SHORT).show();
+
+
+
+            }
+        });
+
+        speedDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RequestHelper.requestToServer("/D");
+                Toast.makeText(getApplicationContext(), "Stopping", Toast.LENGTH_SHORT).show();
+
+
+
+            }
+        });
+
     }
 
     private void buttonsInitializer() {
@@ -89,6 +111,8 @@ public class ManualControlActivity extends AppCompatActivity {
         left     = findViewById(R.id.left);
         right    = findViewById(R.id.right);
         stop     = findViewById(R.id.stop);
+        speedDown = findViewById(R.id.speedDown);
+        speedUp =  findViewById(R.id.speedUp);
 
     }
 }
