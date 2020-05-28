@@ -1,33 +1,44 @@
 package com.example.wifi;
 
+import android.util.Log;
+
 import java.io.IOException;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 class MapCoordinatesRequest {
+    String serverResponse = "";
 
 
-    String request(String url) throws IOException {
-        OkHttpClient client = new OkHttpClient();
-        String responseBody;
-        Request request = new Request.Builder().url(url).build();
+     public String request(String url) throws IOException {
+         OkHttpClient newClient = new OkHttpClient.Builder()
+                 .connectTimeout(5, TimeUnit.MINUTES) // connect timeout
+                 .writeTimeout(5, TimeUnit.MINUTES) // write timeout
+                 .readTimeout(5, TimeUnit.MINUTES) // read timeout
+                 .build();
 
-        try {
-            //set time in mili
-            Thread.sleep(7000);
+         Request request = new Request.Builder().url(url).build();
 
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+         try (Response response = newClient.newCall(request).execute()) {
+             try {
+                 //set time in mili
+                 Thread.sleep(4000);
 
-        try (Response response = client.newCall(request).execute()) {
-            responseBody = Objects.requireNonNull(response.body()).string();
+             }catch (Exception e){
+                 e.printStackTrace();
+             }
+
+            String responseBody = response.body().string();
+            //System.out.println("First response is " +responseBody);
+            serverResponse = responseBody ;
+            //System.out.println("Second response is " + serverResponse);
             // ... do something with response
         }
-        return responseBody;
+        return serverResponse;
+    }
     }
 
-}

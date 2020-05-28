@@ -81,12 +81,12 @@ public class ManualControlActivity extends AppCompatActivity {
     }
 
     private void buttonsInitializer() {
-        forward   = findViewById(R.id.forward);
-        backward  = findViewById(R.id.backward);
-        left      = findViewById(R.id.left);
-        right     = findViewById(R.id.right);
-        stop      = findViewById(R.id.stop);
-        speedDown = findViewById(R.id.speedDown);
+        forward   =  findViewById(R.id.forward);
+        backward  =  findViewById(R.id.backward);
+        left      =  findViewById(R.id.left);
+        right     =  findViewById(R.id.right);
+        stop      =  findViewById(R.id.stop);
+        speedDown =  findViewById(R.id.speedDown);
         speedUp   =  findViewById(R.id.speedUp);
 
     }

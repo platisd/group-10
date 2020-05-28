@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -21,30 +22,56 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        buttonInitialiser();
 
-        button.setOnClickListener(v -> openActivitySecond());
+        buttonsInitialiser();
 
-        automatic.setOnClickListener(v ->
-                RequestHelper.requestToServer("/G"));
 
-        location.setOnClickListener(v -> openMapActivity()
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+
+
+            public void onClick(View v) {
+
+                openActivitySecond();
+//                }
+            }
+        });
+
+
+        automatic.setOnClickListener(new View.OnClickListener(){
+                                         @Override
+                                         public void onClick(View v) {
+                                             RequestHelper.requestToServer("/G");
+                                         }
+                                     }
         );
 
 
+
+        location.setOnClickListener(new View.OnClickListener(){
+
+                                        @Override
+
+                                        public void onClick(View v) {
+                                            openMapActivity();
+                                            //RequestHelper.mapCoordinatesRequestToServer("/M");
+                                        }
+                                    }
+        );
     }
 
-    private void buttonInitialiser() {
-        textView = findViewById(R.id.makeDelivText);
-        button   = findViewById(R.id.manuallyBtn);
-        location = findViewById(R.id.currentLocation);
-        automatic = findViewById(R.id.manuallyBtn2);
+
+    public void buttonsInitialiser(){
+        textView  = (TextView) findViewById(R.id.makeDelivText);
+        button    = (Button)    findViewById(R.id.manuallyBtn);
+        location  = (Button)   findViewById(R.id.currentLocation);
+        automatic = (Button)  findViewById(R.id.manuallyBtn2);
     }
+
 
     public void openActivitySecond() {
         Intent intent = new Intent(MainActivity.this, ManualControlActivity.class);
         startActivity(intent);
-
     }
 
     public void openMapActivity (){
