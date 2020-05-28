@@ -2,7 +2,6 @@ package com.example.wifi;
 
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -18,7 +17,7 @@ public class ManualControlActivity extends AppCompatActivity {
     ImageButton stop;
     Button speedUp;
     Button speedDown;
-    boolean request = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -26,93 +25,69 @@ public class ManualControlActivity extends AppCompatActivity {
         setContentView(R.layout.activity_manual_control);
         buttonsInitializer();
 
-        forward.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RequestHelper.requestToServer("/F");
+        forward.setOnClickListener(v -> {
+            RequestHelper.requestToServer("/F");
 
-                    Toast.makeText(getApplicationContext(),"Going forward..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Going forward..", Toast.LENGTH_SHORT).show();
 
 
-            }
         });
 
-        backward.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                RequestHelper.requestToServer("/B");
+        backward.setOnClickListener(v -> {
+            RequestHelper.requestToServer("/B");
 
-                    Toast.makeText(getApplicationContext(),"Going backward", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Going backward", Toast.LENGTH_SHORT).show();
 
 
-            }
         });
 
-        left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        left.setOnClickListener(v -> {
 
-                RequestHelper.requestToServer("/L");
-                Toast.makeText(getApplicationContext(),"Going left", Toast.LENGTH_SHORT).show();
+            RequestHelper.requestToServer("/L");
+            Toast.makeText(getApplicationContext(),"Going left", Toast.LENGTH_SHORT).show();
 
 
-            }
         });
 
-        right.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RequestHelper.requestToServer("/R");
-                    Toast.makeText(getApplicationContext(),"Going right", Toast.LENGTH_SHORT).show();
+        right.setOnClickListener(v -> {
+            RequestHelper.requestToServer("/R");
+                Toast.makeText(getApplicationContext(),"Going right", Toast.LENGTH_SHORT).show();
 
 
-            }
         });
 
-        stop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RequestHelper.requestToServer("/S");
-                    Toast.makeText(getApplicationContext(), "Stopping", Toast.LENGTH_SHORT).show();
-
-
-
-            }
-        });
-
-
-        speedUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RequestHelper.requestToServer("/A");
+        stop.setOnClickListener(v -> {
+            RequestHelper.requestToServer("/S");
                 Toast.makeText(getApplicationContext(), "Stopping", Toast.LENGTH_SHORT).show();
 
 
 
-            }
         });
 
-        speedDown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RequestHelper.requestToServer("/D");
-                Toast.makeText(getApplicationContext(), "Stopping", Toast.LENGTH_SHORT).show();
+
+        speedUp.setOnClickListener(v -> {
+            RequestHelper.requestToServer("/A");
+            Toast.makeText(getApplicationContext(), "Stopping", Toast.LENGTH_SHORT).show();
+
+        });
 
 
+        speedDown.setOnClickListener(v -> {
+            RequestHelper.requestToServer("/D");
+            Toast.makeText(getApplicationContext(), "Stopping", Toast.LENGTH_SHORT).show();
 
-            }
         });
 
     }
 
     private void buttonsInitializer() {
-        forward  = findViewById(R.id.forward);
-        backward = findViewById(R.id.backward);
-        left     = findViewById(R.id.left);
-        right    = findViewById(R.id.right);
-        stop     = findViewById(R.id.stop);
+        forward   = findViewById(R.id.forward);
+        backward  = findViewById(R.id.backward);
+        left      = findViewById(R.id.left);
+        right     = findViewById(R.id.right);
+        stop      = findViewById(R.id.stop);
         speedDown = findViewById(R.id.speedDown);
-        speedUp =  findViewById(R.id.speedUp);
+        speedUp   =  findViewById(R.id.speedUp);
 
     }
 }

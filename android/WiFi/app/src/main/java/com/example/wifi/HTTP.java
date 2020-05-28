@@ -1,8 +1,7 @@
 package com.example.wifi;
 
-import android.os.Handler;
+
 import android.util.Log;
-import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -15,50 +14,32 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class HTTP {
+class HTTP {
 
-    //int flag = 100;
-    boolean connectionRequest = false;
-
-    public boolean request(String url){
+    void request(String url) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
-        //boolean connectionRequest = false;
 
 
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                //System.out.println("My Url is " + url);
-                //Log.i("My URL is ", url);
+
                 e.printStackTrace();
-                connectionRequest = false;
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        // Magic here
-//                    }
-//                }, 1000); // Millisec
-//            }
-                }
+
+            }
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     Log.d("AA", "resp [" + Objects.requireNonNull(response.body()).string() + "]");
-                   // if (response.body().string().){
-
-                   // }
-                   // MapsActivity.latlng();
-                    connectionRequest = true;
-                }else{
-                    connectionRequest = false;
                 }
-                Log.i("The response code is " , String.valueOf(response.code()));
+
+                Log.i("The response code is ", String.valueOf(response.code()));
+
             }
 
         });
-        return connectionRequest;
-    }
 
+    }
 }
